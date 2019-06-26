@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as config from '../configs/config.json';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ui';
+  public title: string = config.default.project.name;
+
+  constructor(){}
+
+  ngOnInit(){
+    console.log(this.title)
+  }
 }

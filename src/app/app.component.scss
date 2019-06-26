@@ -1,0 +1,15 @@
+img.mainLogo {
+  margin-left:5;
+  width: 20vw;
+  background-color: white;
+  border-radius: 21px;
+  box-shadow: 0 30px 20px rgba(35,32,39,0.5);
+  transform: rotate3d(0, 0, 1, 22.5deg);
+  display: inline;
+}
+h1.mainTitle {
+  max-width: 100px;
+  display: inline;
+  font-family: 'Hammersmith One', sans-serif;
+  font-size: 8em;
+}
