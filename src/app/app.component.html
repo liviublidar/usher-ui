@@ -1,3 +1,12 @@
 <img class="mainLogo" src="../assets/logo/pin.svg">
 <h1 class="mainTitle">{{configuration.project.name}}</h1>
+
+<div class="loginForm">
+  <input type="email" class="loginEmail" [formControl]="loginEmailControl" placeholder="Email Address"/>
+  <input type="password" class="loginPwd" [formControl]="loginPwdControl" placeholder="Password"/>
+</div>
+
+
+
+
 <router-outlet></router-outlet>

@@ -1,15 +1,68 @@
 img.mainLogo {
-  margin-left:5;
-  width: 20vw;
-  background-color: white;
-  border-radius: 21px;
-  box-shadow: 0 30px 20px rgba(35,32,39,0.5);
-  transform: rotate3d(0, 0, 1, 22.5deg);
-  display: inline;
+  @media (max-width: 480px) {
+    display: none;
+  }
+
+  @media (min-width: 480px) {
+    margin-left: 5px;
+    width: 20vw;
+    background-color: white;
+    border-radius: 21px;
+    box-shadow: 0 30px 20px rgba(35,32,39,0.5);
+    transform: rotate3d(0, 0, 1, 22.5deg);
+    display: inline;
+  }
 }
+
 h1.mainTitle {
-  max-width: 100px;
-  display: inline;
-  font-family: 'Hammersmith One', sans-serif;
-  font-size: 8em;
+  @media (max-width: 480px) {
+    display: none;
+  }
+
+  @media (min-width: 480px) {
+    max-width: 100px;
+    display: inline;
+    font-family: 'Hammersmith One', sans-serif;
+    font-size: 8em;
+  }
+}
+
+.loginForm {
+  display: block;
+  @media (max-width: 480px) {
+    //form container mobile styles
+    width: 80%;
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      font-family: 'Ubuntu', sans-serif;
+      color: white;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      font-family: 'Ubuntu', sans-serif;
+      color: white;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      font-family: 'Ubuntu', sans-serif;
+      color: white;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      font-family: 'Ubuntu', sans-serif;
+      color: white;
+    }
+  }
+
+
+  input.loginEmail, input.loginPwd {
+    @media (max-width: 480px) {
+      font-family: 'Ubuntu', sans-serif;
+      color: white;
+      margin-bottom: 16px;
+      background-color: transparent;
+      display: block;
+      outline: none;
+      padding: 10px;
+      border-radius: 24px;
+      border: 1px white solid;
+    }
+  }
+
 }

@@ -15,6 +15,6 @@ export class ConfigService {
   constructor() {}
 
   public getConfig(): IConfiguration {
-    return getProjectConfig().default;
+    return getProjectConfig().default; //.default only neessary due to weird parsing of json file
   }
 }
