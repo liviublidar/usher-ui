@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ConfigService} from '../services/config.service';
+import { CredentialsComponent } from './credentials/credentials.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CredentialsComponent
   ],
   imports: [
     BrowserModule,
