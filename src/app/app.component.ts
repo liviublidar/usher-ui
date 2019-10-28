@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { IConfiguration, ConfigService } from '../services/config.service';
 
 @Component({
@@ -10,8 +9,6 @@ import { IConfiguration, ConfigService } from '../services/config.service';
 export class AppComponent {
   public title: string;
   private configuration: IConfiguration;
-  public loginEmailControl: FormControl = new FormControl('');
-  public loginPwdControl: FormControl =  new FormControl('');
 
   constructor(
     private configService: ConfigService
