@@ -24,3 +24,16 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+/* You can add global styles to this file, and also import other style files */
+
+$headingFont: 'Domine', serif;
+$paragraphFont: 'Roboto', sans-serif;
+$smallParagraphFont: 'Ubuntu', sans-serif;
+
+body {
+/*  min-height: 100vh;*/
+  background: linear-gradient(#1794d7, #804cda);
+  overflow: hidden;
+}
