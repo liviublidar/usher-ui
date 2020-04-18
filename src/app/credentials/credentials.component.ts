@@ -16,6 +16,8 @@ export class CredentialsComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
 
+  public showRegisterForm: boolean = false;
+
   ngOnInit() { }
 
   private emailRegexpPatern =
@@ -35,11 +37,27 @@ export class CredentialsComponent implements OnInit {
         Validators.pattern(this.passwordRegexpPatter)],
       //updateOn: 'blur'
     }),
-
     loginPwdConfirmControl: new FormControl(''),
   });
-
   public showLoginPassword: boolean = false;
+
+  public registerForm = new FormGroup({
+    registerEmailControl:new FormControl('', {
+      validators: [Validators.required, Validators.email, Validators.minLength(6),
+        Validators.pattern(this.emailRegexpPatern)],
+      //updateOn: 'blur'
+    }),
+
+    registerPwdControl: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(8),
+        Validators.pattern(this.passwordRegexpPatter)],
+      //updateOn: 'blur'
+    }),
+    registerPwdConfirmControl: new FormControl(''),
+  });
+
+  public showRegisterPassword: boolean = false;
+
 
   public clearLogin():void {
     console.log(this.loginForm.value);
@@ -55,8 +73,17 @@ export class CredentialsComponent implements OnInit {
     console.log(this.loginForm.get('loginEmailControl').errors);
   }
 
+  public onRegisterSubmit():void {
+    console.log('submitting');
+    console.log(this.registerForm.get('registerEmailControl').errors);
+  }
+
   public showHideLoginPassword(): void {
     this.showLoginPassword = !this.showLoginPassword;
+  }
+
+  public showHideRegisterPassword(): void {
+    this.showRegisterPassword = !this.showRegisterPassword;
   }
 
   public getCredentialsFieldType(loginOrRegister: string): string {
@@ -65,11 +92,11 @@ export class CredentialsComponent implements OnInit {
   }
 
   public getFormControlErrors(formControlName: string): Array<string> {
-    let errors: ValidationErrors = this.loginForm.get(formControlName).errors;
+    let errors: ValidationErrors = this.showRegisterForm ?
+      this.registerForm.get(formControlName).errors : this.loginForm.get(formControlName).errors;
     if (!errors){
       return [];
     }
-    console.log(errors);
     return Object.keys(errors).map((iterableItem) => {
       let errorMessage: string;
       switch (iterableItem) {
@@ -80,14 +107,24 @@ export class CredentialsComponent implements OnInit {
           errorMessage = `You need at least ${errors.minlength.requiredLength} characters`;
           break;
         case 'pattern':
-          errorMessage = formControlName === 'loginEmailControl'
-            ? 'You didn\'t match the required format'
+          errorMessage = formControlName.endsWith('EmailControl')
+            ? 'An email address has the following format: name@domain.com'
             : "You need numbers, uppercase, lowercase and special characters";
           break;
         case 'required':
-          errorMessage = 'This field is required'
+          errorMessage = 'This field is required';
       }
       return errorMessage;
     })
+  }
+
+  public getNotice(): Array<string> {
+    return this.showRegisterForm
+      ? ["Already have an account? ", "Login here"]
+      : ["Don't have an account? ", "Register here"];
+  }
+
+  public switchBetweenLoginAndRegister(): void {
+    this.showRegisterForm = !this.showRegisterForm;
   }
 }
